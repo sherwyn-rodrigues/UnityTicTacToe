@@ -29,6 +29,15 @@ public class GameController : MonoBehaviour
 
     public void EndTurn()
     {
-        Debug.Log("End Turn Code");
+        if(PlayerSide == ButtonState.Player1)
+        {
+            PlayerSide = ButtonState.Player2;
+            return;
+        }
+        else if(PlayerSide == ButtonState.Player2)
+        {
+            PlayerSide = ButtonState.Player1;
+            return;
+        }
     }
 }

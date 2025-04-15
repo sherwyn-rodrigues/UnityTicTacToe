@@ -31,14 +31,9 @@ public class GridSpace : MonoBehaviour
         state = gameController.GetPlayerSide();
         playerImage.color = UnityEngine.Color.white;
 
-        if (state == ButtonState.Player1)
-        {
-            playerImage.sprite = spritePlayer1;
-        }
-        else if(state == ButtonState.Player2)
-        {
-            playerImage.sprite = spritePlayer2;
-        }
+        playerImage.sprite = state == ButtonState.Player1 ? spritePlayer1 :
+                             state == ButtonState.Player2 ? spritePlayer2 : null;
+
         button.interactable = false;
         gameController.EndTurn();
     }

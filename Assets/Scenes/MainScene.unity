@@ -1742,16 +1742,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c437b005cd26d454d99f883369ff8d0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GridList:
-  - {fileID: 1616572930}
-  - {fileID: 1482438036}
-  - {fileID: 930245693}
-  - {fileID: 946245421}
-  - {fileID: 1664426953}
-  - {fileID: 2119445419}
-  - {fileID: 1882786408}
-  - {fileID: 1145596057}
-  - {fileID: 1939376366}
+  uiGrid:
+  - gridSpaces:
+    - {fileID: 1616572930}
+    - {fileID: 1482438036}
+    - {fileID: 930245693}
+  - gridSpaces:
+    - {fileID: 946245421}
+    - {fileID: 1664426953}
+    - {fileID: 2119445419}
+  - gridSpaces:
+    - {fileID: 1882786408}
+    - {fileID: 1145596057}
+    - {fileID: 1939376366}
 --- !u!1001 &1939376361
 PrefabInstance:
   m_ObjectHideFlags: 0

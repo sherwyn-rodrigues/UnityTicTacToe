@@ -22,42 +22,46 @@ public class GameController : MonoBehaviour
     //public GridSpace[,] GridList = new GridSpace[3,3];
     public GridRow[] gameGrid = new GridRow[3];
     //game over panel
-    public GameObject gameOverPanel;
-    public TMP_Text gameOverText;
+    public GameObject gameOverPanel;// game over panel 
+    public GameObject mainBoardPanel;//main Tic Tac Toe board
+    public GameObject mainMenuPanel;//main menu panel(The FIrst Panel Visible)
+    public GameObject gameModeSelectionPanel;
+    public GameObject firstPlayerPanel;//first player panel
+    public GameObject activePlayerPanel;//current active player panel
 
-    //first player panel
-    public GameObject firstPlayerPanel;
     public Image playerStartImage;
     public Sprite spritePlayer1;
     public Sprite spritePlayer2;
-
-    //current active player panel
-    public GameObject activePlayerPanel;
+    //icons and images for current active player
     public Image Player1Img;
     public Image Player2Img;
+    public Image Player1Icon;
+    public Image Player2Icon;
+
+    public Image winnerImage;//used when there is a winner and not draw
+    public Image winnerPlayerImage;
+    public Sprite winnerSprite;
+    public Sprite drawSprite;
+    public Sprite player1WinnerSprite;//sprite references used to displayer winenr p1
+    public Sprite player2WinnerSprite;//sprite references used to displayer winenr p2
 
     private ButtonState gameWonPlayer;
     private ButtonState PlayerSide;
 
     private void Awake()
     {
-        //disable player turn images
-        Player1Img.enabled = false;
-        Player2Img.enabled = false;
-
-        gameOverPanel.SetActive(false);
+        SetAllPanelsInactive();
         SetGameControlelrReferenceButtons();
         PlayerSide = (ButtonState)Random.Range(1, System.Enum.GetValues(typeof(ButtonState)).Length);
-       // PlayerSide = ButtonState.Player1;
     }
 
+    //On Game Start
     private void Start()
     {
-        firstPlayerPanel.SetActive(true);
-        playerStartImage.sprite = PlayerSide == ButtonState.Player1 ? spritePlayer1 : PlayerSide == ButtonState.Player2 ? spritePlayer2 : null;
-        SetActivePlayerImage();
+        mainMenuPanel.SetActive(true);
     }
 
+    //SeControllerReference to each GridSpace buttons 
     void SetGameControlelrReferenceButtons()
     {
         for (int row = 0; row < 3; row++)
@@ -70,11 +74,13 @@ public class GameController : MonoBehaviour
         }
     }
 
+    //returns current player state (player 1 or 2)
     public ButtonState GetPlayerSide()
     {
         return PlayerSide;
     }
 
+    //function called on gridSpace after player completes turn
     public void EndTurn()
     {
         if(CheckGameOver())
@@ -88,6 +94,7 @@ public class GameController : MonoBehaviour
         SetActivePlayerImage();
     }
 
+    //Check if Game Over
     public bool CheckGameOver()
     {
         return WinCheckVertical() || WinCheckHorizontal() || WinCheckDiagonally() || GameDraw();
@@ -138,6 +145,7 @@ public class GameController : MonoBehaviour
         return false;
     }
 
+    //CHeck if game over
     public bool GameDraw()
     {
         for (int row = 0; row < 3; row++)
@@ -156,6 +164,7 @@ public class GameController : MonoBehaviour
     // when game over disable all buttons and display won player
     public void GameOver()
     {
+        mainBoardPanel.SetActive(false);
         for (int row = 0; row < 3; row++)
         {
             for (int col = 0; col < 3; col++)
@@ -168,25 +177,47 @@ public class GameController : MonoBehaviour
         gameOverPanel.SetActive(true);
         if(gameWonPlayer == ButtonState.Player1)
         {
-            gameOverText.text = "X Wins!!";
+            winnerImage.sprite = winnerSprite;
+            winnerImage.enabled = true;
+            winnerPlayerImage.sprite = player1WinnerSprite;
+            winnerPlayerImage.enabled = true;
+            //gameOverText.text = "X Wins!!";
         }
         else if(gameWonPlayer == ButtonState.Player2)
         {
-            gameOverText.text = "O Wins!!";
+            winnerImage.sprite = winnerSprite;
+            winnerImage.enabled = true;
+            winnerPlayerImage.sprite = player2WinnerSprite;
+            winnerPlayerImage.enabled = true;
+            // gameOverText.text = "O Wins!!";
         }
         else if(gameWonPlayer == ButtonState.None)
         {
-            gameOverText.text = "Draw!!";
+            winnerImage.sprite = drawSprite;
+            winnerImage.enabled = true;
+            winnerPlayerImage.enabled = false;
+
+           // gameOverText.text = "Draw!!";
         }
         
     }
 
-    public void QuiGame()
+    //On Quit Btn Pressed
+    public void OnQuiGameBtnClicked()
     {
         Application.Quit();
     }
 
-    public void Restart()
+    //On Restart Btn pressed
+    public void OnRestartBtnClicked()
+    {
+        ResetMainBoard();
+        SetAllPanelsInactive();
+        OnGameModeSinglePlayerClicked();
+    }
+
+    //reloads whole game level
+    public void OnMainMenuBtnClicked()
     {
         SceneManager.LoadScene(0);
     }
@@ -197,21 +228,84 @@ public class GameController : MonoBehaviour
         //enable player turn images
         Player1Img.enabled = true;
         Player2Img.enabled = true;
-
+        Player1Icon.enabled = true;
+        Player2Icon.enabled = true;
         firstPlayerPanel.SetActive(false);
+
+        //enable main board panel
+        mainBoardPanel.SetActive(true);
     }
 
+    //show current player turn on the sides of the board
     void SetActivePlayerImage()
     {
         if(PlayerSide==ButtonState.Player1)
         {
             Player1Img.color = Color.white;
+            Player1Icon.color = Color.white;
             Player2Img.color = new Color(0.6f, 0.6f, 0.6f);
+            Player2Icon.color = new Color(0.6f, 0.6f, 0.6f);
         }
         else
         {
             Player2Img.color = Color.white;
+            Player2Icon.color = Color.white;
             Player1Img.color = new Color(0.6f, 0.6f, 0.6f);
+            Player1Icon.color = new Color(0.6f, 0.6f, 0.6f);
+        }
+    }
+
+    void SetAllPanelsInactive()
+    {
+        gameOverPanel.SetActive(false);
+        mainBoardPanel.SetActive(false);
+        mainMenuPanel.SetActive(false);
+        gameModeSelectionPanel.SetActive(false);
+        firstPlayerPanel.SetActive(false);
+        activePlayerPanel.SetActive(false);
+        //disable player turn images
+        Player1Img.enabled = false;
+        Player2Img.enabled = false;
+        Player1Icon.enabled = false;
+        Player2Icon.enabled = false;
+    }
+
+    public void OnMainMenuPlayBtnClicked()
+    {
+        mainMenuPanel.SetActive(false);
+        gameModeSelectionPanel.SetActive(true);    
+    }
+
+    public void OnGameModeSinglePlayerClicked()
+    {
+        gameModeSelectionPanel.SetActive(false);
+        playerStartImage.sprite = PlayerSide == ButtonState.Player1 ? spritePlayer1 : PlayerSide == ButtonState.Player2 ? spritePlayer2 : null;
+        SetActivePlayerImage();
+        firstPlayerPanel.SetActive(true);
+    }
+
+    public void OnGameModeBackBtnClicked()
+    {
+        gameModeSelectionPanel.SetActive(false);
+        mainMenuPanel.SetActive(true);
+    }
+
+    void ResetMainBoard()
+    {
+        for (int row = 0; row < 3; row++)
+        {
+            for (int col = 0; col < 3; col++)
+            {
+                GridSpace tempGridSpace = gameGrid[row].gridSpaces[col];
+                tempGridSpace.state = ButtonState.None;
+                tempGridSpace.playerImage.sprite = null;
+                tempGridSpace.button.interactable = true;
+                //reset color
+                Color color = tempGridSpace.playerImage.color;
+                color.a = 0f;
+                tempGridSpace.playerImage.color = color;
+
+            }
         }
     }
 }

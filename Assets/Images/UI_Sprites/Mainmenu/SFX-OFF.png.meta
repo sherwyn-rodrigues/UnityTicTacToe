@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 0ea9fc1535c731a44bbc4972f275784f
+guid: 377798b1fd77461469b1fd49f8806eb8
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 3959922740387019359
-    second: X_0
+      213: 6929942210180499236
+    second: SFX-OFF_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: X_0
+      name: SFX-OFF_0
       rect:
         serializedVersion: 2
-        x: 8
-        y: 15
-        width: 83
-        height: 70
+        x: 0
+        y: 0
+        width: 108
+        height: 94
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: f5a72c670c874f630800000000000000
-      internalID: 3959922740387019359
+      spriteID: 4274bc749b91c2060800000000000000
+      internalID: 6929942210180499236
       vertices: []
       indices: 
       edges: []

@@ -287,8 +287,8 @@ MonoBehaviour:
   buttonText: {fileID: 8732049716552886594}
   playerImage: {fileID: 6433502237940295384}
   state: 0
-  spritePlayer1: {fileID: 3959922740387019359, guid: 0ea9fc1535c731a44bbc4972f275784f, type: 3}
-  spritePlayer2: {fileID: -1937887712669590171, guid: efc15206a06843f4db6a9ac22f9f1fe3, type: 3}
+  spritePlayer1: {fileID: 1599094435985036362, guid: 2e2b1ed8193255240b62a0947a7198d2, type: 3}
+  spritePlayer2: {fileID: -2442675325120593136, guid: 4d67f18eaa8922a43a3d5e9e50113b34, type: 3}
 --- !u!1 &8705992730756838612
 GameObject:
   m_ObjectHideFlags: 0

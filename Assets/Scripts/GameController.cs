@@ -102,82 +102,16 @@ public class GameController : MonoBehaviour
     //function called on gridSpace after player completes turn
     public void EndTurn()
     {
-        if(CheckGameOver())
+        if(GameOverRules.CheckGameOver(gameGrid, PlayerSide))
         {
             //run Game Over code
+            gameWonPlayer = PlayerSide;
             GameOver();
             return;
         }
 
         PlayerSide = (PlayerSide == ButtonState.Player1) ? ButtonState.Player2 : ButtonState.Player1;
         SetActivePlayerImage();
-    }
-
-    //Check if Game Over
-    public bool CheckGameOver()
-    {
-        return WinCheckVertical() || WinCheckHorizontal() || WinCheckDiagonally() || GameDraw();
-    }
-
-    //check for win vertically
-    public bool WinCheckVertical()
-    {
-        for (int i = 0; i < 3; i++)
-        {
-            if (gameGrid[0].gridSpaces[i].state == PlayerSide && gameGrid[1].gridSpaces[i].state == PlayerSide && gameGrid[2].gridSpaces[i].state == PlayerSide)
-            {
-                gameWonPlayer = PlayerSide;
-                return true;
-            }
-        }
-        return false;
-    }
-
-    //check for win horizontally
-    public bool WinCheckHorizontal()
-    {
-        for (int i = 0; i < 3; i++)
-        {
-            if (gameGrid[i].gridSpaces[0].state == PlayerSide && gameGrid[i].gridSpaces[1].state == PlayerSide && gameGrid[i].gridSpaces[2].state == PlayerSide)
-            {
-                gameWonPlayer = PlayerSide;
-                return true;
-            }
-        }
-        return false;
-    }
-
-    //check for win diagonally
-    public bool WinCheckDiagonally()
-    {
-        if (gameGrid[0].gridSpaces[0].state == PlayerSide && gameGrid[1].gridSpaces[1].state == PlayerSide && gameGrid[2].gridSpaces[2].state == PlayerSide)
-        {
-            gameWonPlayer = PlayerSide;
-            return true;
-        }
-
-        if (gameGrid[2].gridSpaces[0].state == PlayerSide && gameGrid[1].gridSpaces[1].state == PlayerSide && gameGrid[0].gridSpaces[2].state == PlayerSide)
-        {
-            gameWonPlayer = PlayerSide;
-            return true;
-        }
-        return false;
-    }
-
-    //CHeck if game over
-    public bool GameDraw()
-    {
-        for (int row = 0; row < 3; row++)
-        {
-            for (int col = 0; col < 3; col++)
-            {
-                if (gameGrid[row].gridSpaces[col].state == ButtonState.None)
-                {
-                    return false;
-                }
-            }
-        }
-        return true;
     }
 
     // when game over disable all buttons and display won player

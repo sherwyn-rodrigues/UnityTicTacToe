@@ -1,0 +1,546 @@
+fileFormatVersion: 2
+guid: b9e67dd0bee6fb048b87e40236624e63
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -3315820865695884973
+    second: Select Difficulty_0
+  - first:
+      213: 2058337969176622210
+    second: Select Difficulty_1
+  - first:
+      213: -743547795204378467
+    second: Select Difficulty_2
+  - first:
+      213: -909759043887530853
+    second: Select Difficulty_3
+  - first:
+      213: 2958115188009007323
+    second: Select Difficulty_4
+  - first:
+      213: -3754027855464175764
+    second: Select Difficulty_5
+  - first:
+      213: -7201046590315653234
+    second: Select Difficulty_6
+  - first:
+      213: 5978250764257830463
+    second: Select Difficulty_7
+  - first:
+      213: 7140187630582147542
+    second: Select Difficulty_8
+  - first:
+      213: 1256757982068832624
+    second: Select Difficulty_9
+  - first:
+      213: -7056720640446345181
+    second: Select Difficulty_10
+  - first:
+      213: -8277934685242885948
+    second: Select Difficulty_11
+  - first:
+      213: -4656087645796678472
+    second: Select Difficulty_12
+  - first:
+      213: -5655092489288008547
+    second: Select Difficulty_13
+  - first:
+      213: -8824011342204987930
+    second: Select Difficulty_14
+  - first:
+      213: -6840248185003893458
+    second: Select Difficulty_15
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 1
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Select Difficulty_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 7
+        width: 23
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3595e599d76dbf1d0800000000000000
+      internalID: -3315820865695884973
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Select Difficulty_1
+      rect:
+        serializedVersion: 2
+        x: 24
+        y: 7
+        width: 31
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 284b8783a7fa09c10800000000000000
+      internalID: 2058337969176622210
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Select Difficulty_2
+      rect:
+        serializedVersion: 2
+        x: 55
+        y: 8
+        width: 14
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d90715148336ea5f0800000000000000
+      internalID: -743547795204378467
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Select Difficulty_3
+      rect:
+        serializedVersion: 2
+        x: 70
+        y: 7
+        width: 31
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b9c72ed38f2ef53f0800000000000000
+      internalID: -909759043887530853
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Select Difficulty_4
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 7
+        width: 49
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bd8f6f937165d0920800000000000000
+      internalID: 2958115188009007323
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Select Difficulty_5
+      rect:
+        serializedVersion: 2
+        x: 164
+        y: 8
+        width: 41
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c67e22e1e8307ebc0800000000000000
+      internalID: -3754027855464175764
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Select Difficulty_6
+      rect:
+        serializedVersion: 2
+        x: 207
+        y: 39
+        width: 14
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e879235674eb01c90800000000000000
+      internalID: -7201046590315653234
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Select Difficulty_7
+      rect:
+        serializedVersion: 2
+        x: 207
+        y: 8
+        width: 14
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f36abcd556307f250800000000000000
+      internalID: 5978250764257830463
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Select Difficulty_8
+      rect:
+        serializedVersion: 2
+        x: 221
+        y: 8
+        width: 44
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6d9ac76d1da071360800000000000000
+      internalID: 7140187630582147542
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Select Difficulty_9
+      rect:
+        serializedVersion: 2
+        x: 266
+        y: 39
+        width: 14
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 07979d1e9b6e07110800000000000000
+      internalID: 1256757982068832624
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Select Difficulty_10
+      rect:
+        serializedVersion: 2
+        x: 266
+        y: 8
+        width: 14
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 320570337fd711e90800000000000000
+      internalID: -7056720640446345181
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Select Difficulty_11
+      rect:
+        serializedVersion: 2
+        x: 281
+        y: 7
+        width: 26
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4c8763c134ede1d80800000000000000
+      internalID: -8277934685242885948
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Select Difficulty_12
+      rect:
+        serializedVersion: 2
+        x: 342
+        y: 8
+        width: 14
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8b4443584f0426fb0800000000000000
+      internalID: -4656087645796678472
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Select Difficulty_13
+      rect:
+        serializedVersion: 2
+        x: 356
+        y: 7
+        width: 25
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d9c320cc7531581b0800000000000000
+      internalID: -5655092489288008547
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Select Difficulty_14
+      rect:
+        serializedVersion: 2
+        x: 307
+        y: 8
+        width: 33
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6e59ad59f60da8580800000000000000
+      internalID: -8824011342204987930
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Select Difficulty_15
+      rect:
+        serializedVersion: 2
+        x: 380
+        y: 0
+        width: 32
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e2d1555548e8211a0800000000000000
+      internalID: -6840248185003893458
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Select Difficulty_0: -3315820865695884973
+      Select Difficulty_1: 2058337969176622210
+      Select Difficulty_10: -7056720640446345181
+      Select Difficulty_11: -8277934685242885948
+      Select Difficulty_12: -4656087645796678472
+      Select Difficulty_13: -5655092489288008547
+      Select Difficulty_14: -8824011342204987930
+      Select Difficulty_15: -6840248185003893458
+      Select Difficulty_2: -743547795204378467
+      Select Difficulty_3: -909759043887530853
+      Select Difficulty_4: 2958115188009007323
+      Select Difficulty_5: -3754027855464175764
+      Select Difficulty_6: -7201046590315653234
+      Select Difficulty_7: 5978250764257830463
+      Select Difficulty_8: 7140187630582147542
+      Select Difficulty_9: 1256757982068832624
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

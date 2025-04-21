@@ -2,6 +2,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using static GameController;
 using static GridSpace;
 using static UnityEngine.Rendering.DebugUI.Table;
 
@@ -29,6 +30,7 @@ public class GameController : MonoBehaviour
     public GameObject firstPlayerPanel;//first player panel
     public GameObject activePlayerPanel;//current active player panel
     public GameObject AIDifficultyPanel;
+    public GameObject YouAreP1Panel;
 
     public Image playerStartImage;
     public Sprite spritePlayer1;
@@ -49,6 +51,8 @@ public class GameController : MonoBehaviour
     private ButtonState gameWonPlayer;
     private ButtonState PlayerSide;
 
+    private AIDifficulty singlePlayerDifficulty;// variable to keeptrack of the single players difficulty
+
     //enum for AI Difficulty
     public enum AIDifficulty
     {
@@ -62,7 +66,12 @@ public class GameController : MonoBehaviour
     {
         SetAllPanelsInactive();
         SetGameControlelrReferenceButtons();
-        PlayerSide = (ButtonState)Random.Range(1, System.Enum.GetValues(typeof(ButtonState)).Length);
+    }
+
+    // randomise the player that plays first move (do it evevery time a new game is started or restarted) 
+    private void RandomisePlayerToStart()
+    {
+        PlayerSide = (ButtonState)Random.Range(1, System.Enum.GetValues(typeof(ButtonState)).Length); 
     }
 
     //On Game Start
@@ -221,6 +230,7 @@ public class GameController : MonoBehaviour
     //On Restart Btn pressed
     public void OnRestartBtnClicked()
     {
+        RandomisePlayerToStart();
         ResetMainBoard();
         SetAllPanelsInactive();
         OnGameModeCoOpClicked();
@@ -288,6 +298,7 @@ public class GameController : MonoBehaviour
 
     public void OnGameModeCoOpClicked()
     {
+        RandomisePlayerToStart();
         gameModeSelectionPanel.SetActive(false);
         playerStartImage.sprite = PlayerSide == ButtonState.Player1 ? spritePlayer1 : PlayerSide == ButtonState.Player2 ? spritePlayer2 : null;
         SetActivePlayerImage();
@@ -317,5 +328,40 @@ public class GameController : MonoBehaviour
 
             }
         }
+    }
+
+    //move into single player mode
+    public void OnSinglePlayerBtnClicked()
+    {
+        RandomisePlayerToStart();
+        gameModeSelectionPanel.SetActive(false);
+        AIDifficultyPanel.SetActive(true);
+
+    }
+
+    /// 3 different functions to set 3 different difficulty levels for single player mode
+    public void SetEasyDifficulty() => SetDifficulty(AIDifficulty.Easy);
+    public void SetMediumDifficulty() => SetDifficulty(AIDifficulty.Medium);
+    public void SetHardDifficulty() => SetDifficulty(AIDifficulty.Hard);
+
+    /// End Of Difficulty mode buttons 
+
+    private void SetDifficulty(AIDifficulty difficulty)
+    {
+        AIDifficultyPanel.SetActive(false);
+        singlePlayerDifficulty = difficulty;
+        YouAreP1Panel.SetActive(true);
+
+    }
+
+    //Play button of the you are player 1
+    public void OnYouAreP1PlayBtnClicked()
+    {
+
+        playerStartImage.sprite = PlayerSide == ButtonState.Player1 ? spritePlayer1 : PlayerSide == ButtonState.Player2 ? spritePlayer2 : null;
+        SetActivePlayerImage();
+
+        YouAreP1Panel.SetActive(false);
+        firstPlayerPanel.SetActive(true);
     }
 }

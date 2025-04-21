@@ -28,6 +28,7 @@ public class GameController : MonoBehaviour
     public GameObject gameModeSelectionPanel;
     public GameObject firstPlayerPanel;//first player panel
     public GameObject activePlayerPanel;//current active player panel
+    public GameObject AIDifficultyPanel;
 
     public Image playerStartImage;
     public Sprite spritePlayer1;
@@ -47,6 +48,15 @@ public class GameController : MonoBehaviour
 
     private ButtonState gameWonPlayer;
     private ButtonState PlayerSide;
+
+    //enum for AI Difficulty
+    public enum AIDifficulty
+    {
+        Easy,
+        Medium,
+        Hard
+    }
+    //enum for AI Difficulty end
 
     private void Awake()
     {
@@ -213,7 +223,7 @@ public class GameController : MonoBehaviour
     {
         ResetMainBoard();
         SetAllPanelsInactive();
-        OnGameModeSinglePlayerClicked();
+        OnGameModeCoOpClicked();
     }
 
     //reloads whole game level
@@ -276,7 +286,7 @@ public class GameController : MonoBehaviour
         gameModeSelectionPanel.SetActive(true);    
     }
 
-    public void OnGameModeSinglePlayerClicked()
+    public void OnGameModeCoOpClicked()
     {
         gameModeSelectionPanel.SetActive(false);
         playerStartImage.sprite = PlayerSide == ButtonState.Player1 ? spritePlayer1 : PlayerSide == ButtonState.Player2 ? spritePlayer2 : null;

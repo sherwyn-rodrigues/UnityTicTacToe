@@ -1,63 +1,74 @@
 using UnityEngine;
+using static GameController;
 using static GridSpace;
 
 public class GameOverRules
 {
     //Check if Game Over
-    public static bool CheckGameOver(GridRow[] gameGrid, ButtonState playerSide)
+    public static GameOutcome CheckGameOver(GridRow[] gameGrid, ButtonState playerSide)
     {
-        return WinCheckVertical(gameGrid, playerSide) || WinCheckHorizontal(gameGrid, playerSide) || WinCheckDiagonally(gameGrid, playerSide) || GameDraw(gameGrid);
+        GameOutcome outcome;
+        outcome = WinCheckVertical(gameGrid, playerSide);
+        if (outcome != GameOutcome.InProgress) return outcome;
+
+        outcome = WinCheckHorizontal(gameGrid, playerSide);
+        if (outcome != GameOutcome.InProgress) return outcome;
+
+        outcome = WinCheckDiagonally(gameGrid, playerSide);
+        if (outcome != GameOutcome.InProgress) return outcome;
+
+        return GameDraw(gameGrid);
     }
 
 
 
 
     //check for win vertically
-    public static bool WinCheckVertical(GridRow[] gameGrid, ButtonState playerSide)
+    public static GameOutcome WinCheckVertical(GridRow[] gameGrid, ButtonState playerSide)
     {
         for (int i = 0; i < 3; i++)
         {
             if (gameGrid[0].gridSpaces[i].state == playerSide && gameGrid[1].gridSpaces[i].state == playerSide && gameGrid[2].gridSpaces[i].state == playerSide)
             {
-                return true;
+                return GameOutcome.Win;
             }
         }
-        return false;
+        return GameOutcome.InProgress;
     }
 
     //check for win horizontally
-    public static bool WinCheckHorizontal(GridRow[] gameGrid, ButtonState playerSide)
+    public static GameOutcome WinCheckHorizontal(GridRow[] gameGrid, ButtonState playerSide)
     {
         for (int i = 0; i < 3; i++)
         {
             if (gameGrid[i].gridSpaces[0].state == playerSide && gameGrid[i].gridSpaces[1].state == playerSide && gameGrid[i].gridSpaces[2].state == playerSide)
             {
                 //gameWonPlayer = playerSide;
-                return true;
+                return GameOutcome.Win;
             }
         }
-        return false;
+        return GameOutcome.InProgress;
     }
 
     //check for win diagonally
-    public static bool WinCheckDiagonally(GridRow[] gameGrid, ButtonState playerSide)
+    public static GameOutcome WinCheckDiagonally(GridRow[] gameGrid, ButtonState playerSide)
     {
         if (gameGrid[0].gridSpaces[0].state == playerSide && gameGrid[1].gridSpaces[1].state == playerSide && gameGrid[2].gridSpaces[2].state == playerSide)
         {
-           // gameWonPlayer = playerSide;
-            return true;
+            // gameWonPlayer = playerSide;
+            return GameOutcome.Win;
         }
 
         if (gameGrid[2].gridSpaces[0].state == playerSide && gameGrid[1].gridSpaces[1].state == playerSide && gameGrid[0].gridSpaces[2].state == playerSide)
         {
             //gameWonPlayer = playerSide;
-            return true;
+            return GameOutcome.Win;
         }
-        return false;
+        return GameOutcome.InProgress;
     }
 
     //CHeck if game over
-    public static bool GameDraw(GridRow[] gameGrid)
+    public static GameOutcome GameDraw(GridRow[] gameGrid)
     {
         for (int row = 0; row < 3; row++)
         {
@@ -65,10 +76,10 @@ public class GameOverRules
             {
                 if (gameGrid[row].gridSpaces[col].state == ButtonState.None)
                 {
-                    return false;
+                    return GameOutcome.InProgress;
                 }
             }
         }
-        return true;
+        return GameOutcome.Draw; ;
     }
 }

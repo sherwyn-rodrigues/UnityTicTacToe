@@ -1,4 +1,5 @@
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -60,7 +61,14 @@ public class GameController : MonoBehaviour
         Medium,
         Hard
     }
-    //enum for AI Difficulty end
+
+    //enum for game state
+    public enum GameOutcome
+    {
+        InProgress,
+        Win,
+        Draw
+    }
 
     private void Awake()
     {
@@ -102,10 +110,18 @@ public class GameController : MonoBehaviour
     //function called on gridSpace after player completes turn
     public void EndTurn()
     {
-        if(GameOverRules.CheckGameOver(gameGrid, PlayerSide))
+        GameOutcome outcome  =  GameOverRules.CheckGameOver(gameGrid, PlayerSide);
+
+        if(outcome == GameOutcome.Win)
         {
-            //run Game Over code
             gameWonPlayer = PlayerSide;
+            GameOver();
+            return;
+        }
+
+        if(outcome == GameOutcome.Draw)
+        {
+            gameWonPlayer = ButtonState.None;
             GameOver();
             return;
         }

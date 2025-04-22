@@ -27,6 +27,10 @@ public class AIController
         /// Eg use all random for easy and random with min max sometimes and only min max function based on difficulty
         /// remember to configure later
 
+        if (IsFirstPlayer(gameGrid))
+        {
+            return RandomAvailableMove(gameGrid, playerSide);
+        }
         return AIBestMove(gameGrid, playerSide);
     }
 
@@ -148,12 +152,27 @@ public class AIController
             }
         }
 
-        if(availableMoves == null || availableMoves.Count == 0)
+        if (availableMoves == null || availableMoves.Count == 0)
         {
             return new MoveResult(-1, -1);
         }
 
         int index = UnityEngine.Random.Range(0, availableMoves.Count);
         return availableMoves[index];
+    }
+
+    public static bool IsFirstPlayer(GridRow[] gameGrid)
+    {
+        for (int row = 0; row < 3; row++)
+        {
+            for (int col = 0; col < 3; col++)
+            {
+                if (gameGrid[row].gridSpaces[col].state != ButtonState.None)
+                {
+                    return false;
+                }
+            }
+        }
+        return true;
     }
 }

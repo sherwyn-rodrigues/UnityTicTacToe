@@ -1,5 +1,7 @@
+using System.Collections;
 using TMPro;
 using Unity.VisualScripting;
+using Unity.VisualScripting.Dependencies.Sqlite;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -129,7 +131,7 @@ public class GameController : MonoBehaviour
         //AI Players turn
         if (bIsSinglePlayer && PlayerSide == ButtonState.Player2)
         {
-            AIPlayersTurn();
+            StartCoroutine(AIPlayersTurn());
         }
     }
 
@@ -137,13 +139,7 @@ public class GameController : MonoBehaviour
     public void GameOver()
     {
         mainBoardPanel.SetActive(false);
-        for (int row = 0; row < 3; row++)
-        {
-            for (int col = 0; col < 3; col++)
-            {
-                gameGrid[row].gridSpaces[col].button.interactable = false;
-            }
-        }
+        disablePlayerInput();
 
         //enable game over panel
         gameOverPanel.SetActive(true);
@@ -214,7 +210,7 @@ public class GameController : MonoBehaviour
 
         if(bIsSinglePlayer && PlayerSide == ButtonState.Player2)
         {
-            AIPlayersTurn(); 
+            StartCoroutine(AIPlayersTurn());
         }
     }
 
@@ -331,9 +327,39 @@ public class GameController : MonoBehaviour
         firstPlayerPanel.SetActive(true);
     }
 
-    private void AIPlayersTurn()
+    //function called when AI 
+    private IEnumerator AIPlayersTurn()
     {
-        MoveResult aiMoveResult = AIController.AiMove(gameGrid, PlayerSide);
+        disablePlayerInput();
+        MoveResult aiMoveResult = AIController.AiMove(gameGrid, PlayerSide);//this will get the Ai Move 
+        //Debug.Log(aiMoveResult.row + ":" + aiMoveResult.col);
+
+        // disable player from moving and add delay before showing Ai Move
+        yield return new WaitForSeconds(1f);
         gameGrid[aiMoveResult.row].gridSpaces[aiMoveResult.col].SetSpace();
+        enablePlayerInput();
+    }
+
+    private void disablePlayerInput()
+    {
+        for (int row = 0; row < 3; row++)
+        {
+            for (int col = 0; col < 3; col++)
+            {
+                gameGrid[row].gridSpaces[col].button.interactable = false;
+            }
+        }
+    }
+
+    private void enablePlayerInput()
+    {
+        for (int row = 0; row < 3; row++)
+        {
+            for (int col = 0; col < 3; col++)
+            {
+                if(gameGrid[row].gridSpaces[col].state == ButtonState.None)
+                    gameGrid[row].gridSpaces[col].button.interactable=true;
+            }
+        }
     }
 }

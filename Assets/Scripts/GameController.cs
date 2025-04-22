@@ -333,7 +333,6 @@ public class GameController : MonoBehaviour
 
     private void AIPlayersTurn()
     {
-        Debug.Log("AIController Players Turn");
         MoveResult aiMoveResult = AIController.AiMove(gameGrid, PlayerSide);
         gameGrid[aiMoveResult.row].gridSpaces[aiMoveResult.col].SetSpace();
     }

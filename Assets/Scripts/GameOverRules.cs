@@ -24,7 +24,7 @@ public class GameOverRules
 
 
     //check for win vertically
-    public static GameOutcome WinCheckVertical(GridRow[] gameGrid, ButtonState playerSide)
+    private static GameOutcome WinCheckVertical(GridRow[] gameGrid, ButtonState playerSide)
     {
         for (int i = 0; i < 3; i++)
         {
@@ -37,7 +37,7 @@ public class GameOverRules
     }
 
     //check for win horizontally
-    public static GameOutcome WinCheckHorizontal(GridRow[] gameGrid, ButtonState playerSide)
+    private static GameOutcome WinCheckHorizontal(GridRow[] gameGrid, ButtonState playerSide)
     {
         for (int i = 0; i < 3; i++)
         {
@@ -51,7 +51,7 @@ public class GameOverRules
     }
 
     //check for win diagonally
-    public static GameOutcome WinCheckDiagonally(GridRow[] gameGrid, ButtonState playerSide)
+    private static GameOutcome WinCheckDiagonally(GridRow[] gameGrid, ButtonState playerSide)
     {
         if (gameGrid[0].gridSpaces[0].state == playerSide && gameGrid[1].gridSpaces[1].state == playerSide && gameGrid[2].gridSpaces[2].state == playerSide)
         {
@@ -68,7 +68,7 @@ public class GameOverRules
     }
 
     //CHeck if game over
-    public static GameOutcome GameDraw(GridRow[] gameGrid)
+    private static GameOutcome GameDraw(GridRow[] gameGrid)
     {
         for (int row = 0; row < 3; row++)
         {

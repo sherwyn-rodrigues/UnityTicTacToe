@@ -18,10 +18,8 @@ public class GridRow
 }
 // end button row class 
 
-
 public class GameController : MonoBehaviour
 {
-    //public GridSpace[,] GridList = new GridSpace[3,3];
     public GridRow[] gameGrid = new GridRow[3];
     //game over panel
     public GameObject gameOverPanel;// game over panel 
@@ -53,6 +51,7 @@ public class GameController : MonoBehaviour
     private ButtonState PlayerSide;
 
     private AIDifficulty singlePlayerDifficulty;// variable to keeptrack of the single players difficulty
+    private bool bIsSinglePlayer = false;
 
     //enum for AI Difficulty
     public enum AIDifficulty
@@ -95,8 +94,7 @@ public class GameController : MonoBehaviour
         {
             for (int col = 0; col < 3; col++)
             {
-                GridSpace tempGridSpace = gameGrid[row].gridSpaces[col];
-                tempGridSpace.SetGameControllerReference(this);
+                gameGrid[row].gridSpaces[col].SetGameControllerReference(this);
             }
         }
     }
@@ -128,6 +126,11 @@ public class GameController : MonoBehaviour
 
         PlayerSide = (PlayerSide == ButtonState.Player1) ? ButtonState.Player2 : ButtonState.Player1;
         SetActivePlayerImage();
+        //AI Players turn
+        if (bIsSinglePlayer && PlayerSide == ButtonState.Player2)
+        {
+            AIPlayersTurn();
+        }
     }
 
     // when game over disable all buttons and display won player
@@ -183,7 +186,10 @@ public class GameController : MonoBehaviour
         RandomisePlayerToStart();
         ResetMainBoard();
         SetAllPanelsInactive();
-        OnGameModeCoOpClicked();
+
+        //reset board start to appropriate mode 
+        if (bIsSinglePlayer) OnGameModeSinglePlayerClicked(); else OnGameModeCoOpClicked();
+
     }
 
     //reloads whole game level
@@ -204,6 +210,12 @@ public class GameController : MonoBehaviour
 
         //enable main board panel
         mainBoardPanel.SetActive(true);
+        //run this code only if its a single player mode
+
+        if(bIsSinglePlayer && PlayerSide == ButtonState.Player2)
+        {
+            AIPlayersTurn(); 
+        }
     }
 
     //show current player turn on the sides of the board
@@ -233,6 +245,8 @@ public class GameController : MonoBehaviour
         gameModeSelectionPanel.SetActive(false);
         firstPlayerPanel.SetActive(false);
         activePlayerPanel.SetActive(false);
+        AIDifficultyPanel.SetActive(false);
+        YouAreP1Panel.SetActive(false);
         //disable player turn images
         Player1Img.enabled = false;
         Player2Img.enabled = false;
@@ -253,6 +267,7 @@ public class GameController : MonoBehaviour
         playerStartImage.sprite = PlayerSide == ButtonState.Player1 ? spritePlayer1 : PlayerSide == ButtonState.Player2 ? spritePlayer2 : null;
         SetActivePlayerImage();
         firstPlayerPanel.SetActive(true);
+        bIsSinglePlayer = false;
     }
 
     public void OnGameModeBackBtnClicked()
@@ -281,11 +296,12 @@ public class GameController : MonoBehaviour
     }
 
     //move into single player mode
-    public void OnSinglePlayerBtnClicked()
+    public void OnGameModeSinglePlayerClicked()
     {
         RandomisePlayerToStart();
         gameModeSelectionPanel.SetActive(false);
         AIDifficultyPanel.SetActive(true);
+        bIsSinglePlayer = true;
 
     }
 
@@ -313,5 +329,12 @@ public class GameController : MonoBehaviour
 
         YouAreP1Panel.SetActive(false);
         firstPlayerPanel.SetActive(true);
+    }
+
+    private void AIPlayersTurn()
+    {
+        Debug.Log("AIController Players Turn");
+        MoveResult aiMoveResult = AIController.AiMove(gameGrid, PlayerSide);
+        gameGrid[aiMoveResult.row].gridSpaces[aiMoveResult.col].SetSpace();
     }
 }

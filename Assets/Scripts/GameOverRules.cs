@@ -80,6 +80,6 @@ public class GameOverRules
                 }
             }
         }
-        return GameOutcome.Draw; ;
+        return GameOutcome.Draw;
     }
 }

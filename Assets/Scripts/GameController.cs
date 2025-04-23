@@ -1,13 +1,9 @@
 using System.Collections;
-using TMPro;
-using Unity.VisualScripting;
-using Unity.VisualScripting.Dependencies.Sqlite;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-using static GameController;
 using static GridSpace;
-using static UnityEngine.Rendering.DebugUI.Table;
+//using static UnityEngine.Rendering.DebugUI.Table;
 
 
 /// <summary>
@@ -331,7 +327,7 @@ public class GameController : MonoBehaviour
     private IEnumerator AIPlayersTurn()
     {
         disablePlayerInput();
-        MoveResult aiMoveResult = AIController.AiMove(gameGrid, PlayerSide);//this will get the Ai Move 
+        MoveResult aiMoveResult = AIController.AiMove(gameGrid, PlayerSide, singlePlayerDifficulty);//this will get the Ai Move 
         //Debug.Log(aiMoveResult.row + ":" + aiMoveResult.col);
 
         // disable player from moving and add delay before showing Ai Move
@@ -340,6 +336,7 @@ public class GameController : MonoBehaviour
         enablePlayerInput();
     }
 
+    //disable player input when game is over or Ai players move and user should be blocked
     private void disablePlayerInput()
     {
         for (int row = 0; row < 3; row++)
@@ -351,6 +348,7 @@ public class GameController : MonoBehaviour
         }
     }
 
+    // Enable input only to available spaces
     private void enablePlayerInput()
     {
         for (int row = 0; row < 3; row++)

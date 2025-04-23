@@ -1,4 +1,3 @@
-using NUnit.Framework;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
@@ -20,18 +19,30 @@ public struct MoveResult
 public class AIController
 {
     MoveResult minMaxResult;
-    public static MoveResult AiMove(GridRow[] gameGrid, ButtonState playerSide)
+    public static MoveResult AiMove(GridRow[] gameGrid, ButtonState playerSide, AIDifficulty difficulty)
     {
         ///call functions based on requirements
-        /// this will control the AI difficult
-        /// Eg use all random for easy and random with min max sometimes and only min max function based on difficulty
-        /// remember to configure later
+        /// this will control the AI difficulty
+        /// easy- call random on 3/5 probabbility and min max on 2/5 probability
+        /// medium- call random on 2/5 probabbility and min max on 3/5 probability
+        /// hard- call min max everytime
 
-        if (IsFirstPlayer(gameGrid))
+        int roll = UnityEngine.Random.Range(0, 5);
+
+        switch (difficulty)
         {
-            return RandomAvailableMove(gameGrid, playerSide);
+            case AIDifficulty.Easy:
+                return roll > 1 ? RandomAvailableMove(gameGrid, playerSide) : AIBestMove(gameGrid, playerSide);
+
+            case AIDifficulty.Medium:
+                return roll > 2 ? RandomAvailableMove(gameGrid, playerSide) : AIBestMove(gameGrid, playerSide);
+
+            case AIDifficulty.Hard:
+                return IsFirstPlayer(gameGrid) ? RandomAvailableMove(gameGrid, playerSide) : AIBestMove(gameGrid, playerSide);
+
+            default:
+                return RandomAvailableMove(gameGrid, playerSide);
         }
-        return AIBestMove(gameGrid, playerSide);
     }
 
     public static MoveResult AIBestMove(GridRow[] gameGrid, ButtonState playerSide)
@@ -161,6 +172,8 @@ public class AIController
         return availableMoves[index];
     }
 
+
+    // checks if this is the first move on the board that the AI is going to make 
     public static bool IsFirstPlayer(GridRow[] gameGrid)
     {
         for (int row = 0; row < 3; row++)

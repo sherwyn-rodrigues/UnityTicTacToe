@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Verticle_StrikeLine_0: 9220732238847352693
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

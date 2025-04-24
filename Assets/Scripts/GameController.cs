@@ -249,7 +249,8 @@ public class GameController : MonoBehaviour
     public void OnMainMenuPlayBtnClicked()
     {
         mainMenuPanel.SetActive(false);
-        gameModeSelectionPanel.SetActive(true);    
+        gameModeSelectionPanel.SetActive(true);
+       // AudioManager.Instance.PlaySFX();
     }
 
     public void OnGameModeCoOpClicked()
@@ -359,5 +360,10 @@ public class GameController : MonoBehaviour
                     gameGrid[row].gridSpaces[col].button.interactable=true;
             }
         }
+    }
+
+    public void SFXBtnPressed()
+    {
+
     }
 }

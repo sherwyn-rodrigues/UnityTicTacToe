@@ -19,6 +19,8 @@ public class GridRow
 public class GameController : MonoBehaviour
 {
     public GridRow[] gameGrid = new GridRow[3];
+
+    [Header("Panels")]
     //game over panel
     public GameObject gameOverPanel;// game over panel 
     public GameObject mainBoardPanel;//main Tic Tac Toe board
@@ -29,9 +31,11 @@ public class GameController : MonoBehaviour
     public GameObject AIDifficultyPanel;
     public GameObject YouAreP1Panel;
 
+    [Header("Display Images and Sprites")]
     public Image playerStartImage;
     public Sprite spritePlayer1;
     public Sprite spritePlayer2;
+
     //icons and images for current active player
     public Image Player1Img;
     public Image Player2Img;
@@ -45,8 +49,19 @@ public class GameController : MonoBehaviour
     public Sprite player1WinnerSprite;//sprite references used to displayer winenr p1
     public Sprite player2WinnerSprite;//sprite references used to displayer winenr p2
 
+    [Header("Audio")]
+    //BGM
+    public Sprite muteBgMSprite;
+    public Sprite unmuteBgMSprite;
+    public Button BGMBtn;
+    //SFX
+    public Sprite muteSFXSprite;
+    public Sprite unmuteSFXSprite;
+    public Button SFXBtn;
+
     private ButtonState gameWonPlayer;
     private ButtonState PlayerSide;
+
 
     private AIDifficulty singlePlayerDifficulty;// variable to keeptrack of the single players difficulty
     private bool bIsSinglePlayer = false;
@@ -363,6 +378,25 @@ public class GameController : MonoBehaviour
     }
 
     public void SFXBtnPressed()
+    {
+        AudioManager.Instance.ToggleSFX();
+        UpdateAudioBtnImages();
+    }
+
+    public void BGMusicBtnPressed()
+    {
+        AudioManager.Instance.ToggleBGMusic();
+        UpdateAudioBtnImages();
+    }
+
+    // changes the images displayed on the menu 
+    public void UpdateAudioBtnImages()
+    {
+        BGMBtn.image.sprite =  AudioManager.Instance.IsMusicOn() ? unmuteBgMSprite : muteBgMSprite;
+        SFXBtn.image.sprite =  AudioManager.Instance.IsSFXOn() ? unmuteSFXSprite : muteSFXSprite;
+    }
+
+    public void SettingsBtnClicked()
     {
 
     }

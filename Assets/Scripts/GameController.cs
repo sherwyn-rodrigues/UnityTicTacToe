@@ -126,14 +126,14 @@ public class GameController : MonoBehaviour
         if(outcome == GameOutcome.Win)
         {
             gameWonPlayer = PlayerSide;
-            GameOver();
+            StartCoroutine(GameOver());
             return;
         }
 
         if(outcome == GameOutcome.Draw)
         {
             gameWonPlayer = ButtonState.None;
-            GameOver();
+            StartCoroutine(GameOver());
             return;
         }
 
@@ -147,11 +147,12 @@ public class GameController : MonoBehaviour
     }
 
     // when game over disable all buttons and display won player
-    public void GameOver()
+    public IEnumerator GameOver()
     {
-        mainBoardPanel.SetActive(false);
         disablePlayerInput();
+        yield return new WaitForSeconds(0.5f);
 
+        mainBoardPanel.SetActive(false);
         //enable game over panel
         gameOverPanel.SetActive(true);
         if(gameWonPlayer == ButtonState.Player1)

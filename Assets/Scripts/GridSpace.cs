@@ -28,6 +28,7 @@ public class GridSpace : MonoBehaviour
     public void SetSpace()
     {
         state = gameController.GetPlayerSide();
+        AudioManager.Instance.PlayerTurnSFX(ref state); // play audio on button click
         playerImage.color = UnityEngine.Color.white;
 
         playerImage.sprite = state == ButtonState.Player1 ? spritePlayer1 :

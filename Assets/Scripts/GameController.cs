@@ -127,6 +127,7 @@ public class GameController : MonoBehaviour
         {
             gameWonPlayer = PlayerSide;
             StartCoroutine(GameOver());
+            AudioManager.Instance.PlayWinSFX();
             return;
         }
 
@@ -134,6 +135,7 @@ public class GameController : MonoBehaviour
         {
             gameWonPlayer = ButtonState.None;
             StartCoroutine(GameOver());
+            AudioManager.Instance.PlayDrawSFX();
             return;
         }
 
@@ -395,10 +397,5 @@ public class GameController : MonoBehaviour
     {
         BGMBtn.image.sprite =  AudioManager.Instance.IsMusicOn() ? unmuteBgMSprite : muteBgMSprite;
         SFXBtn.image.sprite =  AudioManager.Instance.IsSFXOn() ? unmuteSFXSprite : muteSFXSprite;
-    }
-
-    public void SettingsBtnClicked()
-    {
-
     }
 }

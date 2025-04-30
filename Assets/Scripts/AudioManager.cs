@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.Rendering;
+using static GridSpace;
 
 public class AudioManager : MonoBehaviour
 {
@@ -14,6 +15,10 @@ public class AudioManager : MonoBehaviour
     [Header("Audio Clips")]
     public AudioClip bgMusicClip;
     public AudioClip buttonClickSFX;
+    public AudioClip Player1Turn;
+    public AudioClip Player2Turn;
+    public AudioClip WinScreenSFX;
+    public AudioClip DrawScreenSFX;
 
     //bool to check audio (need to add player prefs)
     bool isBGMPaused;
@@ -80,4 +85,37 @@ public class AudioManager : MonoBehaviour
 
     public bool IsMusicOn() => !isBGMPaused;
     public bool IsSFXOn() => !isSFXDisabled;
+
+    public void PlayerTurnSFX(ref ButtonState state)
+    {
+        if (!sfxSource.mute && buttonClickSFX != null && !isSFXDisabled)
+        {
+            if (state == ButtonState.Player1)
+            {
+                sfxSource.PlayOneShot(Player1Turn);
+                return;
+            }
+            if (state == ButtonState.Player2)
+            {
+                sfxSource.PlayOneShot(Player2Turn);
+                return;
+            }
+        }
+    }
+
+    public void PlayDrawSFX()
+    {
+        if (!sfxSource.mute && buttonClickSFX != null && !isSFXDisabled)
+        {
+            sfxSource.PlayOneShot(DrawScreenSFX);
+        }
+    }
+
+    public void PlayWinSFX()
+    {
+        if (!sfxSource.mute && buttonClickSFX != null && !isSFXDisabled)
+        {
+            sfxSource.PlayOneShot(WinScreenSFX);
+        } 
+    }
 }

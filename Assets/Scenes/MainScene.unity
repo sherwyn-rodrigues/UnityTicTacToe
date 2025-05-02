@@ -6243,11 +6243,11 @@ MonoBehaviour:
   musicSource: {fileID: 2039389490}
   sfxSource: {fileID: 564230981}
   bgMusicClip: {fileID: 8300000, guid: e175bcce88e67744682300763c664e26, type: 3}
-  buttonClickSFX: {fileID: 8300000, guid: b97b4dce66c61c14f8588009de225c15, type: 3}
+  buttonClickSFX: {fileID: 8300000, guid: bb197e79142c86443815dce3b20382c5, type: 3}
   Player1Turn: {fileID: 8300000, guid: c55b8c14a7080eb4db944b128e1dc8f1, type: 3}
   Player2Turn: {fileID: 8300000, guid: f8dda0d9fe616e44eb1d53a199356fb8, type: 3}
   WinScreenSFX: {fileID: 8300000, guid: aaab0ffb815b29c4f92d764d5109be84, type: 3}
-  DrawScreenSFX: {fileID: 0}
+  DrawScreenSFX: {fileID: 8300000, guid: 23877a2b44af92c4993de05b48a30f60, type: 3}
 --- !u!114 &2119445419 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2125273913285107226, guid: c6b4103bb67d6b64ab91af8d83e34ba8, type: 3}

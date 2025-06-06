@@ -128,6 +128,7 @@ public class GameController : MonoBehaviour
     public void EndTurn()
     {
         GameOutcome outcome  =  GameOverRules.CheckGameOver(gameGrid, PlayerSide);
+        CloseSettingsPanleIfOpen();
 
         if(outcome == GameOutcome.Win)
         {
@@ -157,6 +158,7 @@ public class GameController : MonoBehaviour
     // when game over disable all buttons and display won player
     public IEnumerator GameOver()
     {
+        CloseSettingsPanleIfOpen();
         disablePlayerInput();
         yield return new WaitForSeconds(0.5f);
 
@@ -195,6 +197,7 @@ public class GameController : MonoBehaviour
     public void OnQuiGameBtnClicked()
     {
         EnableExitConfirmationPanel();
+        CloseSettingsPanleIfOpen();
     }
 
     //On Restart Btn pressed
@@ -207,6 +210,7 @@ public class GameController : MonoBehaviour
 
         //reset board start to appropriate mode 
         if (bIsSinglePlayer) OnGameModeSinglePlayerClicked(); else OnGameModeCoOpClicked();
+        CloseSettingsPanleIfOpen();
 
     }
 
@@ -214,6 +218,7 @@ public class GameController : MonoBehaviour
     public void OnMainMenuBtnClicked()
     {
         SceneManager.LoadScene(0);
+        CloseSettingsPanleIfOpen();
     }
 
     //close first player panel
@@ -235,6 +240,7 @@ public class GameController : MonoBehaviour
         {
             StartCoroutine(AIPlayersTurn());
         }
+        CloseSettingsPanleIfOpen();
     }
 
     //show current player turn on the sides of the board
@@ -277,7 +283,8 @@ public class GameController : MonoBehaviour
     {
         mainMenuPanel.SetActive(false);
         gameModeSelectionPanel.SetActive(true);
-       // AudioManager.Instance.PlaySFX();
+        CloseSettingsPanleIfOpen();
+        // AudioManager.Instance.PlaySFX();
     }
 
     public void OnGameModeCoOpClicked()
@@ -288,6 +295,7 @@ public class GameController : MonoBehaviour
         SetActivePlayerImage();
         firstPlayerPanel.SetActive(true);
         bIsSinglePlayer = false;
+        CloseSettingsPanleIfOpen();
     }
 
     public void OnGameModeBackBtnClicked()
@@ -295,6 +303,7 @@ public class GameController : MonoBehaviour
         ResetMainBoard();
         SetAllPanelsInactive();
         mainMenuPanel.SetActive(true);
+        CloseSettingsPanleIfOpen();
     }
 
     void ResetMainBoard()
@@ -323,6 +332,7 @@ public class GameController : MonoBehaviour
         gameModeSelectionPanel.SetActive(false);
         AIDifficultyPanel.SetActive(true);
         bIsSinglePlayer = true;
+        CloseSettingsPanleIfOpen();
 
     }
 
@@ -350,6 +360,7 @@ public class GameController : MonoBehaviour
 
         YouAreP1Panel.SetActive(false);
         firstPlayerPanel.SetActive(true);
+        CloseSettingsPanleIfOpen();
     }
 
     //function called when AI 

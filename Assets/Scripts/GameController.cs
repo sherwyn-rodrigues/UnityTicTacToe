@@ -219,6 +219,7 @@ public class GameController : MonoBehaviour
         firstPlayerPanel.SetActive(false);
 
         //enable main board panel
+        ResetMainBoard();
         mainBoardPanel.SetActive(true);
         //run this code only if its a single player mode
 
@@ -283,7 +284,8 @@ public class GameController : MonoBehaviour
 
     public void OnGameModeBackBtnClicked()
     {
-        gameModeSelectionPanel.SetActive(false);
+        ResetMainBoard();
+        SetAllPanelsInactive();
         mainMenuPanel.SetActive(true);
     }
 

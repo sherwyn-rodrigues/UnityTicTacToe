@@ -1,4 +1,5 @@
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -31,6 +32,7 @@ public class GameController : MonoBehaviour
     public GameObject AIDifficultyPanel;
     public GameObject YouAreP1Panel;
     public GameObject ExitGameCOnfirmPanel;
+    public GameObject SettingsPanel;
 
     [Header("Display Images and Sprites")]
     public Image playerStartImage;
@@ -67,6 +69,8 @@ public class GameController : MonoBehaviour
     private AIDifficulty singlePlayerDifficulty;// variable to keeptrack of the single players difficulty
     private bool bIsSinglePlayer = false;
 
+    private bool isSettingsEnabled = false;
+
     //enum for AI Difficulty
     public enum AIDifficulty
     {
@@ -99,6 +103,7 @@ public class GameController : MonoBehaviour
     private void Start()
     {
         mainMenuPanel.SetActive(true);
+        ShowSettings();
     }
 
     //SeControllerReference to each GridSpace buttons 
@@ -158,6 +163,7 @@ public class GameController : MonoBehaviour
         mainBoardPanel.SetActive(false);
         //enable game over panel
         gameOverPanel.SetActive(true);
+        RemoveSettings();// remove settings btn when game over pankel is displayed
         if(gameWonPlayer == ButtonState.Player1)
         {
             winnerImage.sprite = winnerSprite;
@@ -197,6 +203,7 @@ public class GameController : MonoBehaviour
         RandomisePlayerToStart();
         ResetMainBoard();
         SetAllPanelsInactive();
+        ShowSettings();
 
         //reset board start to appropriate mode 
         if (bIsSinglePlayer) OnGameModeSinglePlayerClicked(); else OnGameModeCoOpClicked();
@@ -415,5 +422,41 @@ public class GameController : MonoBehaviour
     public void OnGameCloseConfirmationConfirm()
     {
         Application.Quit();
+    }
+
+    public void SettingsBtnClicked()
+    {
+
+        if(isSettingsEnabled)
+        {
+            SFXBtn.gameObject.SetActive(false);
+            BGMBtn.gameObject.SetActive(false);
+        }
+        else
+        {
+            SFXBtn.gameObject.SetActive(true);
+            BGMBtn.gameObject.SetActive(true);
+        }
+
+        isSettingsEnabled = !isSettingsEnabled;
+    }
+
+    public void ShowSettings()
+    {
+        SettingsPanel.SetActive(true);
+        UpdateAudioBtnImages();
+    }
+
+    public void RemoveSettings()
+    {
+        SettingsPanel.SetActive(false);
+    }
+
+    public void CloseSettingsPanleIfOpen()
+    {
+        if (isSettingsEnabled)
+        {
+            SettingsBtnClicked();
+        }
     }
 }

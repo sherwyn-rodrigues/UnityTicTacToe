@@ -30,6 +30,7 @@ public class GameController : MonoBehaviour
     public GameObject activePlayerPanel;//current active player panel
     public GameObject AIDifficultyPanel;
     public GameObject YouAreP1Panel;
+    public GameObject ExitGameCOnfirmPanel;
 
     [Header("Display Images and Sprites")]
     public Image playerStartImage;
@@ -187,7 +188,7 @@ public class GameController : MonoBehaviour
     //On Quit Btn Pressed
     public void OnQuiGameBtnClicked()
     {
-        Application.Quit();
+        EnableExitConfirmationPanel();
     }
 
     //On Restart Btn pressed
@@ -399,5 +400,20 @@ public class GameController : MonoBehaviour
     {
         BGMBtn.image.sprite =  AudioManager.Instance.IsMusicOn() ? unmuteBgMSprite : muteBgMSprite;
         SFXBtn.image.sprite =  AudioManager.Instance.IsSFXOn() ? unmuteSFXSprite : muteSFXSprite;
+    }
+
+    public void EnableExitConfirmationPanel()
+    {
+        ExitGameCOnfirmPanel.SetActive(true);
+    }
+
+    public void OnGameCloseConfirmationCancel()
+    {
+        ExitGameCOnfirmPanel.SetActive(false);
+    }
+
+    public void OnGameCloseConfirmationConfirm()
+    {
+        Application.Quit();
     }
 }
